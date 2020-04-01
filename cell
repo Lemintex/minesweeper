@@ -1,0 +1,36 @@
+class Cell {
+  int x;
+  int y;
+  int size = 20;
+  Cell(int posX, int posY) {
+    x = posX*20;
+    y = posY*20;
+    int NumberOfBox;
+    boolean hasBomb;
+    boolean isClicked = false;
+  }
+
+  void display(int x, int y) {
+  x*=size;
+  y*=size;
+    fill(127);
+    rect(x, y, 20, 20);
+    lines(x, y, size);
+  }
+
+  void lines(int x, int y, int size) {
+    fill(155,0,200);
+    line(x, y, x+size, y);
+    line(x, y, x, y+size);
+    line(x+size, y, x+size, y+size);
+    line(x, y+size, x+size, y+size);
+    
+  }
+  void isClicked() {
+    if(mouseX > x && mouseX <x+size && mouseY > y && mouseY < y + size){
+    fill(200);
+    rect(x, y, 20, 20);
+    click = false;
+    }
+  }
+}
