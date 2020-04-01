@@ -46,4 +46,3 @@ void generateCells() {
     cells[x][y].isClicked();
     }
   }
-
