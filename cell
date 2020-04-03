@@ -5,12 +5,21 @@ class Cell {
   int numberOfCell;
   boolean hasBomb;
   Cell(int posX, int posY) {
-    x = posX*20;
-    y = posY*20;
-    numberOfCell = (int)random(1, 10);
-    if (numberOfCell == 9) {
-      hasBomb=true;
+    x = posX*size;
+    y = posY*size;
+    numberOfCell = (int)random(1, 9);
+  placeBomb(posX, posY);
+}
+  
+  //---------------------------
+  //is bomb
+  
+  void placeBomb(int posX, int posY){
+    for(int i = 0; i<generator.numberOfBombs;i++){
+    if (generator.location[i][0] == posX && generator.location[i][1] == posY) {
+      hasBomb=true;  
     }
+    } 
   }
   //--------------------------------------------------
   //displayInitial
@@ -41,7 +50,7 @@ class Cell {
     if (mouseX >= x && mouseX < x+size && mouseY >= y && mouseY < y + size) {
       fill(200);
       rect(x, y, size, size);
-      click = false;
+     // click = false;
       fill(255, 0, 0);
       showNumber();
       isBomb();
