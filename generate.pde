@@ -1,23 +1,18 @@
-class Generate{
-  int numberOfBombs;  
-  int[][] location;
-  Generate(){
-  numberOfBombs = 15;
-  location = new int[numberOfBombs][2];
-}
-  void randomCells(){
-    
-    for(int x = 0; x < numberOfBombs; x++){
-      location[x][0] = (int)random(0, cellCountX+1); 
-      location[x][1] = (int)random(0, cellCountY+1);
+class Generate {
+  int numberOfMines;  
+  Generate() {
+    numberOfMines = 25;
+  }
+  void randomCells() {
+
+    int minesPlaced = 0;
+    while (minesPlaced<numberOfMines) {
+      int x = (int)random(0, cellCountX); 
+      int y = (int)random(0, cellCountY);
+      if(!cells[x][y].hasMine){
+      cells[x][y].hasMine = true;
+      minesPlaced++;
+      }
     }
   }
-  
-  void placeBombs(){
-    for(int x = 0; x < numberOfBombs; x++){
-    }
-  }
-  
-  
-  
 }
