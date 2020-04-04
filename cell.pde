@@ -2,25 +2,17 @@ class Cell {
   int x;
   int y;
   int size = 20;
-  int numberOfCell;
-  boolean hasBomb;
+  int positionX;
+  int positionY;
+  boolean hasMine;
   Cell(int posX, int posY) {
     x = posX*size;
     y = posY*size;
-    numberOfCell = (int)random(1, 9);
-  placeBomb(posX, posY);
+positionX = posX;
+positionY = posY;
 }
+    
   
-  //---------------------------
-  //is bomb
-  
-  void placeBomb(int posX, int posY){
-    for(int i = 0; i<generator.numberOfBombs;i++){
-    if (generator.location[i][0] == posX && generator.location[i][1] == posY) {
-      hasBomb=true;  
-    }
-    } 
-  }
   //--------------------------------------------------
   //displayInitial
 
@@ -50,17 +42,18 @@ class Cell {
     if (mouseX >= x && mouseX < x+size && mouseY >= y && mouseY < y + size) {
       fill(200);
       rect(x, y, size, size);
-     // click = false;
+      // click = false;
       fill(255, 0, 0);
       showNumber();
-      isBomb();
+      isMine();
     }
   }
 
   //--------------------------------------------------------------------
   //number write
   void showNumber() {
-    switch(numberOfCell) {
+    int num = logic.cellValue(positionX, positionY);
+    switch(num) {
     case 1:
       fill(52, 147, 252);
       break;
@@ -86,14 +79,26 @@ class Cell {
       fill (120);
       break;
     }
-          text(numberOfCell, x+7, y+15);
+    text(num, x+7, y+15);
   }
+
   //----------------------------------------------------------------
   //bomb
-  void isBomb() {
-    if (hasBomb) {
+  void isMine() {
+    if (hasMine) {
       fill(0);
       rect(x, y, size, size);
     }
   }
+
+  //-------------------------------------------------------------------
+  //determineNumber
+
+  //int determineNumber() {
+  //  int number = 0;
+  //  for (int i = -1; i<2; i++) {
+  //    for (int j = -1; j < 2; i++) {
+  //    }
+  //  }
+  //}
 }
