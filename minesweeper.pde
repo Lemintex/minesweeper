@@ -1,32 +1,37 @@
 boolean click;
-int cellCountX = 30;
-int cellCountY = 20;
+int cellCountX = 10;
+int cellCountY = 10;
 
 Cell[][] cells;
 Generate generator;
+CellLogic logic;
 void setup() 
 {
   size(1000, 1000);
   background(50);
   cells = new Cell[cellCountX][cellCountY];
   generator = new Generate();
-    generateBombs();
+  logic = new CellLogic();
+  declare();
+  generateMines();
+  generateCells();
+}
+void declare() {
   for (int x = 0; x<cellCountX; x++) {
     for (int y = 0; y<cellCountY; y++) {
-      declare(x, y);
-      generateCells(x, y);
+      cells[x][y] = new Cell(x, y);
     }
   }
-
-}
-void declare(int i, int j) {
-  cells[i][j] = new Cell(i, j);
 }
 
-void generateCells(int x, int y) {
-  cells[x][y].displayInitial(x, y);
+void generateCells() {
+  for (int x = 0; x<cellCountX; x++) {
+    for (int y = 0; y<cellCountY; y++) {
+      cells[x][y].displayInitial(x, y);
+    }
+  }
 }
-void generateBombs(){
+void generateMines() {
   generator.randomCells();
 }
 
