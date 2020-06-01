@@ -1,7 +1,6 @@
 class Cell {
   int x;
   int y;
-  int size = 20;
   int positionX;
   int positionY;
   boolean hasMine;

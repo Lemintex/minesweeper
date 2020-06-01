@@ -1,6 +1,7 @@
 boolean click;
 int cellCountX = 10;
 int cellCountY = 10;
+int size = 20;
 Death death;
 Cell[][] cells;
 Generate generator;
@@ -51,12 +52,8 @@ void checkClick() {
   if (!mousePressed && !death.dead) {
     click = true;
   }
-  for (int i = 0; i<cellCountX; i++) {
-    for (int j = 0; j<cellCountY; j++) {
-      if (click) {
-        click(i, j);
-      }
-    }
+  if(click && mouseX/size < cellCountX && mouseY/size < cellCountY){
+    click(mouseX/size, mouseY/size);
   }
 }
 
