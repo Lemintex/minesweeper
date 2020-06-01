@@ -86,11 +86,9 @@ positionY = posY;
   //bomb
   void isMine() {
     if (hasMine) {
-      dead = true;
       fill(0);
       rect(x, y, size, size);
-      fill(255,0,0);
-      text("You died!", width/2, height/2);
+      death.onDeath();
     }
   }
 
